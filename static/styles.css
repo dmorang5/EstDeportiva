@@ -2,6 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f8f9fa;
 }
 
 h1 {
@@ -27,7 +28,7 @@ h1 {
 
 .atras {
     margin-top: 10px;
-    text-align:left;
+    text-align: left;
 }
 
 .atras a {
@@ -59,19 +60,21 @@ main {
 main img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
 }
 
+/* Estilos de la tabla */
 table {
     border-collapse: collapse;
     width: 100%;
 }
 
 thead {
-    border-bottom: 7px solid #FE9900; 
+    border-bottom: 7px solid #FE9900!important;
 }
+
 table, th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #ddd!important;
 }
 
 th, td {
@@ -83,6 +86,7 @@ th {
     background-color: #1C3247;
     color: white;
 }
+
 /* Contenedor de la paginación */
 .pagination {
     display: flex;
@@ -92,7 +96,6 @@ th {
     font-family: Arial, sans-serif;
 }
 
-/* Estilos para los enlaces */
 .page-link {
     padding: 10px 15px;
     margin: 0 5px;
@@ -103,13 +106,11 @@ th {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Cambiar color al pasar el mouse sobre los enlaces */
 .page-link:hover {
     background-color: #f56a79;
     color: #1C3247;
 }
 
-/* Estilo para la información de la página */
 .page-info {
     padding: 10px 15px;
     margin: 0 5px;
@@ -117,9 +118,84 @@ th {
     color: #333;
 }
 
-/* Mostrar solo el enlace anterior si hay una página anterior */
 .page-link[disabled] {
     pointer-events: none;
     background-color: #ccc;
     color: #666;
+}
+
+/* Hacer todo responsivo para pantallas más grandes y tabletas */
+@media (max-width: 768px) {
+
+
+    .pagination {
+        flex-direction: column;
+    }
+
+    .pagination .page-link {
+        margin: 5px 0;
+    }
+
+    main img {
+        object-fit: contain;
+        width: 100%;
+        height: auto;
+    }
+
+    .container li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .container li .atras a {
+        width: 100%;
+        text-align: center;
+    }
+
+    main img {
+        height: auto;
+        object-fit: contain;
+    }
+}
+@media (max-width:664px) {
+    main img {
+        height: auto;
+        object-fit: contain;
+    }
+}
+/* Estilo para pantallas muy pequeñas (smartphones) */
+@media (max-width: 480px) {
+    main img {
+        height: auto;
+        object-fit: contain;
+    }
+
+    .page-info {
+        font-size: 14px;
+    }
+
+    .container li {
+        padding: 10px;
+    }
+
+    .container li .atras a {
+        width: 100%;
+        text-align: center;
+        padding: 8px 15px;
+    }
+
+    main img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .pagination .page-link {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .pagination .page-info {
+        font-size: 12px;
+    }
 }
