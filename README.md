@@ -9,6 +9,7 @@ Este proyecto es una aplicación web para la gestión y visualización de estad�
 - 📌 Diseño adaptado para dispositivos móviles.
 - 📌 Sistema de paginación para mejorar la experiencia de usuario.
 - 📌 Uso de **Bootstrap** para una interfaz moderna y estilizada.
+- 📌 Generación de PDF de las estadísticas
 
 ## 🛠️ Tecnologías Utilizadas
 - **Frontend**: HTML, CSS, Bootstrap  
