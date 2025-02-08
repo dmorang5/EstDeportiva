@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% block content %}
+    <div class="atras" style="text-align: right; margin: 10px;" ><a href="{{ url_for('generar_pdf') }}" style="text-decoration: none;" >Generar PDF</a></div>
+        <div class="container">
+            <h1>Estadísticas</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Equipo</th>
+                        <th>Partidos Ganados</th>
+                        <th>Partidos Empatados</th>
+                        <th>Partidos Perdidos</th>
+                        <th>Goles</th>
+                        <th>Remates al Arco</th>
+                        <th>Asistencia</th>
+                        <th>Tarjetas Amarillas</th>
+                        <th>Tarjetas Rojas</th>
+                        <th>Prob. Ganar</th>
+                        <th>Prob. Perder</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for estadistica in estadisticas %}
+                        <tr>
+                            <td>{{ estadistica.equipo.nombre }}</td>
+                            <td>{{ estadistica.partidos_ganados }}</td>
+                            <td>{{ estadistica.partidos_empatados }}</td>
+                            <td>{{ estadistica.partidos_perdidos }}</td>
+                            <td>{{ estadistica.goles }}</td>
+                            <td>{{ estadistica.remates_al_arco }}</td>
+                            <td>{{ estadistica.asistencia }}</td>
+                            <td>{{ estadistica.tarjetas_amarillas }}</td>
+                            <td>{{ estadistica.tarjetas_rojas }}</td>
+                            <td>{{ estadistica.probabilidad_ganar|round(2) }}%</td>
+                            <td>{{ estadistica.probabilidad_perder|round(2) }}%</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endblock %}
+
+</body>
+</html>

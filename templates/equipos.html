@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Equipos</title>
+</head>
+<body>
+    {% block content %}
+        <div class="container">
+            <h1>Equipos</h1>
+            <ul>
+                {% for equipo in equipos %}
+                    <li><a href="{{ url_for('equipo', equipo_id=equipo.id) }}" style="text-decoration: none; color: #1C3247;">{{ equipo.nombre }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endblock %}
+    {% block pagination %}
+        <div class="pagination">
+            {% if pagination.has_prev %}
+                <a class="page-link" href="{{ url_for('equipos', page=1) }}">&laquo; Primera</a>
+                <a class="page-link" href="{{ url_for('equipos', page=pagination.prev_num) }}">Anterior</a>
+            {% endif %}
+            
+            <span class="page-info">Página {{ pagination.page }} de {{ pagination.pages }}</span>
+            
+            {% if pagination.has_next %}
+                <a class="page-link" href="{{ url_for('equipos', page=pagination.next_num) }}">Siguiente</a>
+                <a class="page-link" href="{{ url_for('equipos', page=pagination.pages) }}">Última &raquo;</a>
+            {% endif %}
+        </div>
+    {% endblock %}
+</body>
+</html>

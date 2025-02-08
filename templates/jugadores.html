@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugadores</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% block content %}
+        <div class="container">
+            <h1>Jugadores</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Número de Camiseta</th>
+                        <th>Equipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for jugador in jugadores %}
+                        <tr>
+                            <td>{{ jugador.nombre }}</td>
+                            <td>{{ jugador.numero_camiseta }}</td>
+                            <td>{{ jugador.equipo.nombre }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endblock %}
+    {% block pagination %}
+        <div class="pagination">
+            {% if pagination.has_prev %}
+                <a class="page-link" href="{{ url_for('jugadores', page=1) }}">&laquo; Primera</a>
+                <a class="page-link" href="{{ url_for('jugadores', page=pagination.prev_num) }}">Anterior</a>
+            {% endif %}
+            
+            <span class="page-info">Página {{ pagination.page }} de {{ pagination.pages }}</span>
+            
+            {% if pagination.has_next %}
+                <a class="page-link" href="{{ url_for('jugadores', page=pagination.next_num) }}">Siguiente</a>
+                <a class="page-link" href="{{ url_for('jugadores', page=pagination.pages) }}">Última &raquo;</a>
+            {% endif %}
+        </div>
+    {% endblock %}
+</body>
+</html>
